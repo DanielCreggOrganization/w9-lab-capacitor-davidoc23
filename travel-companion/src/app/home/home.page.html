@@ -9,31 +9,49 @@
     <!-- Button to fetch location -->
     <ion-button expand="block" (click)="fetchLocation()">Get Location</ion-button>
 
+    <!-- Display location if available -->
+    <div *ngIf="location" class="info-container">
+      <p><strong>Latitude:</strong> {{ location.latitude }}</p>
+      <p><strong>Longitude:</strong> {{ location.longitude }}</p>
+    </div>
+
     <!-- Button to fetch device info -->
     <ion-button expand="block" color="secondary" (click)="fetchDeviceInfo()">Get Device Info</ion-button>
+
+    <!-- Display device info if available -->
+    <div *ngIf="deviceInfo" class="info-container">
+      <p><strong>Model:</strong> {{ deviceInfo.model }}</p>
+      <p><strong>Platform:</strong> {{ deviceInfo.platform }}</p>
+      <p><strong>Operating System:</strong> {{ deviceInfo.osVersion }}</p>
+    </div>
 
     <!-- Button to fetch network info -->
     <ion-button expand="block" color="tertiary" (click)="fetchNetworkInfo()">Get Network Info</ion-button>
 
-    <!-- Display location if available -->
-    <div *ngIf="location" class="location-info">
-      <p><strong>Latitude:</strong> {{ location.latitude }}</p>
-      <p><strong>Longitude:</strong> {{ location.longitude }}</p>
-      <br>
-    </div>
-
-    <!-- Display device info if available -->
-    <div *ngIf="deviceInfo" class="device-info">
-      <p><strong>Model:</strong> {{ deviceInfo.model }}</p>
-      <p><strong>Platform:</strong> {{ deviceInfo.platform }}</p>
-      <p><strong>Operating System:</strong> {{ deviceInfo.osVersion }}</p>
-      <br>
-    </div>
-
     <!-- Display network info if available -->
-    <div *ngIf="networkInfo" class="network-info">
+    <div *ngIf="networkInfo" class="info-container">
       <p><strong>Connection Type:</strong> {{ networkInfo.connectionType }}</p>
       <p><strong>Is Online:</strong> {{ networkInfo.connected ? 'Yes' : 'No' }}</p>
     </div>
+
+    <!-- Button to toggle the visibility of browser info -->
+    <ion-button expand="block" (click)="toggleBrowserInfo()">Toggle Browser Info</ion-button>
+
+    <!-- Display browser compatibility info if showBrowserInfo is true -->
+    <div *ngIf="showBrowserInfo" class="info-container">
+      <p><strong>Browser:</strong> {{ browserInfo }}</p>
+    </div>
+
+    <!-- Button to toggle the visibility of API info -->
+    <ion-button expand="block" (click)="toggleApiInfo()">Toggle Web API Info</ion-button>
+
+    <!-- Display available Web APIs if showApiInfo is true -->
+    <div *ngIf="showApiInfo && apiList.length > 0" class="info-container">
+      <p><strong>Available Web APIs:</strong></p>
+      <ul>
+        <li *ngFor="let api of apiList">{{ api }}</li>
+      </ul>
+    </div>
+
   </div>
 </ion-content>
