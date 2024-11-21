@@ -32,7 +32,8 @@ export class HomePage {
   constructor(
     private locationService: LocationService,
     private deviceInfoService: DeviceInfoService,
-    private networkInfoService: NetworkInfoService
+    private networkInfoService: NetworkInfoService,
+    
   ) {}
 
   async fetchLocation() {
@@ -52,4 +53,5 @@ export class HomePage {
     this.isNetworkInfoModalOpen = true; // Open the network info modal
     console.log('Network Info:', this.networkInfo);
   }
+  
 }
