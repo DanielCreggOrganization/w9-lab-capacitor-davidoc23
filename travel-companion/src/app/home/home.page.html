@@ -1,20 +1,29 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="container">
+    <!-- Button to fetch location -->
+    <ion-button expand="block" (click)="fetchLocation()">Get Location</ion-button>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <!-- Button to fetch device info -->
+    <ion-button expand="block" color="secondary" (click)="fetchDeviceInfo()">Get Device Info</ion-button>
+
+    <!-- Display location if available -->
+    <div *ngIf="location" class="location-info">
+      <p><strong>Latitude:</strong> {{ location.latitude }}</p>
+      <p><strong>Longitude:</strong> {{ location.longitude }}</p>
+      <br>
+    </div>
+
+    <!-- Display device info if available -->
+    <div *ngIf="deviceInfo" class="device-info">
+      <p><strong>Model:</strong> {{ deviceInfo.model }}</p>
+      <p><strong>Platform:</strong> {{ deviceInfo.platform }}</p>
+      <p><strong>Operating System:</strong> {{ deviceInfo.osVersion }}</p>
+    </div>
   </div>
 </ion-content>
