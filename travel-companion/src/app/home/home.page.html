@@ -12,6 +12,9 @@
     <!-- Button to fetch device info -->
     <ion-button expand="block" color="secondary" (click)="fetchDeviceInfo()">Get Device Info</ion-button>
 
+    <!-- Button to fetch network info -->
+    <ion-button expand="block" color="tertiary" (click)="fetchNetworkInfo()">Get Network Info</ion-button>
+
     <!-- Display location if available -->
     <div *ngIf="location" class="location-info">
       <p><strong>Latitude:</strong> {{ location.latitude }}</p>
@@ -24,6 +27,12 @@
       <p><strong>Model:</strong> {{ deviceInfo.model }}</p>
       <p><strong>Platform:</strong> {{ deviceInfo.platform }}</p>
       <p><strong>Operating System:</strong> {{ deviceInfo.osVersion }}</p>
+    </div>
+
+    <!-- Display network info if available -->
+    <div *ngIf="networkInfo" class="network-info">
+      <p><strong>Connection Type:</strong> {{ networkInfo.connectionType }}</p>
+      <p><strong>Is Online:</strong> {{ networkInfo.connected ? 'Yes' : 'No' }}</p>
     </div>
   </div>
 </ion-content>
